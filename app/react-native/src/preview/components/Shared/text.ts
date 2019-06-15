@@ -1,4 +1,4 @@
-import styled from '@emotion/native';
+import styled from 'styled-components/native';
 import { EmotionProps } from './theme';
 
 export const Header = styled.Text`

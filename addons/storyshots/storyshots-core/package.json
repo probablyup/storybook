@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "enzyme-to-json": "^3.3.5",
-    "jest-emotion": "^10.0.10",
+    "jest-styled-components": "beta",
     "react": "^16.8.3"
   },
   "publishConfig": {

@@ -32,138 +32,138 @@ The webpack config [is configurable](/configurations/custom-webpack-config/), an
 <details>
   <summary>This is what the config for storybook looks like when using CRA in dev-mode:</summary>
 
-  ```js
-  {
-    mode: 'development',
-    bail: false,
-    devtool: '#cheap-module-source-map',
-    entry: [
-      '@storybook/core/dist/server/common/polyfills.js',
-      '@storybook/core/dist/server/preview/globals.js',
-      '<your-storybook-dir>/config.js',
-      'webpack-hot-middleware/client.js?reload=true',
-    ],
-    output: {
-      path: './',
-      filename: '[name].[hash].bundle.js',
-      publicPath: '',
+```js
+{
+  mode: 'development',
+  bail: false,
+  devtool: '#cheap-module-source-map',
+  entry: [
+    '@storybook/core/dist/server/common/polyfills.js',
+    '@storybook/core/dist/server/preview/globals.js',
+    '<your-storybook-dir>/config.js',
+    'webpack-hot-middleware/client.js?reload=true',
+  ],
+  output: {
+    path: './',
+    filename: '[name].[hash].bundle.js',
+    publicPath: '',
+  },
+  plugins: [
+    HtmlWebpackPlugin {
+      options: {
+        template: '@storybook/core/dist/server/templates/index.ejs',
+        templateContent: false,
+        templateParameters: [Function: templateParameters],
+        filename: 'iframe.html',
+        hash: false,
+        inject: false,
+        compile: true,
+        favicon: false,
+        minify: undefined,
+        cache: true,
+        showErrors: true,
+        chunks: 'all',
+        excludeChunks: [],
+        chunksSortMode: 'none',
+        meta: {},
+        title: 'Webpack App',
+        xhtml: false,
+        alwaysWriteToDisk: true,
+      },
     },
-    plugins: [
-      HtmlWebpackPlugin {
-        options: {
-          template: '@storybook/core/dist/server/templates/index.ejs',
-          templateContent: false,
-          templateParameters: [Function: templateParameters],
-          filename: 'iframe.html',
-          hash: false,
-          inject: false,
-          compile: true,
-          favicon: false,
-          minify: undefined,
-          cache: true,
-          showErrors: true,
-          chunks: 'all',
-          excludeChunks: [],
-          chunksSortMode: 'none',
-          meta: {},
-          title: 'Webpack App',
-          xhtml: false,
-          alwaysWriteToDisk: true,
-        },
-      },
-      DefinePlugin {
-        definitions: {
-          'process.env': {
-            NODE_ENV: '"development"',
-            NODE_PATH: '""',
-            PUBLIC_URL: '"."',
-            '<storybook-environment-variables>'
-            '<dotenv-environment-variables>'
-          },
-        },
-      },
-      WatchMissingNodeModulesPlugin {
-        nodeModulesPath: './node_modules',
-      },
-      HotModuleReplacementPlugin {},
-      CaseSensitivePathsPlugin {},
-      ProgressPlugin {},
-      DefinePlugin {
-        definitions: {
+    DefinePlugin {
+      definitions: {
+        'process.env': {
+          NODE_ENV: '"development"',
+          NODE_PATH: '""',
+          PUBLIC_URL: '"."',
           '<storybook-environment-variables>'
           '<dotenv-environment-variables>'
         },
       },
-    ],
-    module: {
-      rules: [
-        { test: /\.(mjs|jsx?)$/, 
-          use: [
-            { loader: 'babel-loader', options:
-              { cacheDirectory: './node_modules/.cache/storybook',
-                presets: [
-                  [ './node_modules/@babel/preset-env/lib/index.js', { shippedProposals: true, useBuiltIns: 'usage', corejs: '3' } ],
-                  './node_modules/@babel/preset-react/lib/index.js',
-                  './node_modules/@babel/preset-flow/lib/index.js',
-                ],
-                plugins: [
-                  './node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js',
-                  './node_modules/@babel/plugin-proposal-class-properties/lib/index.js',
-                  './node_modules/@babel/plugin-syntax-dynamic-import/lib/index.js',
-                  [ './node_modules/babel-plugin-emotion/dist/babel-plugin-emotion.cjs.js', { sourceMap: true, autoLabel: true } ],
-                  './node_modules/babel-plugin-macros/dist/index.js',
-                  './node_modules/@babel/plugin-transform-react-constant-elements/lib/index.js',
-                  './node_modules/babel-plugin-add-react-displayname/index.js',
-                  [ './node_modules/babel-plugin-react-docgen/lib/index.js', { DOC_GEN_COLLECTION_NAME: 'STORYBOOK_REACT_CLASSES' } ],
-                ],
-              },
-            },
-          ],
-          include: [ './' ],
-          exclude: [ './node_modules' ],
-        },
-        { test: /\.md$/, 
-          use: [
-            { loader: './node_modules/raw-loader/index.js' },
-          ],
-        },
-        { test: /\.css$/,
-          use: [
-            './node_modules/style-loader/index.js',
-            { loader: './node_modules/css-loader/dist/cjs.js', options: { importLoaders: 1 } },
-            { loader: './node_modules/postcss-loader/src/index.js', options: { ident: 'postcss', postcss: {}, plugins: [Function: plugins] } },
-          ],
-        },
-        { test: /\.(svg|ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/,
-          loader: './node_modules/file-loader/dist/cjs.js',
-          query: { name: 'static/media/[name].[hash:8].[ext]' },
-        },
-        { test: /\.(mp4|webm|wav|mp3|m4a|aac|oga)(\?.*)?$/,
-          loader: './node_modules/url-loader/dist/cjs.js',
-          query: { limit: 10000, name: 'static/media/[name].[hash:8].[ext]' },
-        },
-      ],
     },
-    resolve: {
-      extensions: [ '.mjs', '.js', '.jsx', '.json' ],
-      modules: [ 'node_modules' ],
-      mainFields: [ 'browser', 'main', 'module' ],
-      alias: {
-        'core-js': './node_modules/core-js',
-        react: './node_modules/react',
-        'react-dom': './node_modules/react-dom',
+    WatchMissingNodeModulesPlugin {
+      nodeModulesPath: './node_modules',
+    },
+    HotModuleReplacementPlugin {},
+    CaseSensitivePathsPlugin {},
+    ProgressPlugin {},
+    DefinePlugin {
+      definitions: {
+        '<storybook-environment-variables>'
+        '<dotenv-environment-variables>'
       },
     },
-    optimization: {
-      splitChunks: { chunks: 'all' },
-      runtimeChunk: true,
-      minimizer: [ [Object] ],
+  ],
+  module: {
+    rules: [
+      { test: /\.(mjs|jsx?)$/,
+        use: [
+          { loader: 'babel-loader', options:
+            { cacheDirectory: './node_modules/.cache/storybook',
+              presets: [
+                [ './node_modules/@babel/preset-env/lib/index.js', { shippedProposals: true, useBuiltIns: 'usage', corejs: '3' } ],
+                './node_modules/@babel/preset-react/lib/index.js',
+                './node_modules/@babel/preset-flow/lib/index.js',
+              ],
+              plugins: [
+                './node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js',
+                './node_modules/@babel/plugin-proposal-class-properties/lib/index.js',
+                './node_modules/@babel/plugin-syntax-dynamic-import/lib/index.js',
+                './node_modules/babel-plugin-macros/dist/index.js',
+                './node_modules/babel-plugin-styled-components/lib/index.js',
+                './node_modules/@babel/plugin-transform-react-constant-elements/lib/index.js',
+                './node_modules/babel-plugin-add-react-displayname/index.js',
+                [ './node_modules/babel-plugin-react-docgen/lib/index.js', { DOC_GEN_COLLECTION_NAME: 'STORYBOOK_REACT_CLASSES' } ],
+              ],
+            },
+          },
+        ],
+        include: [ './' ],
+        exclude: [ './node_modules' ],
+      },
+      { test: /\.md$/,
+        use: [
+          { loader: './node_modules/raw-loader/index.js' },
+        ],
+      },
+      { test: /\.css$/,
+        use: [
+          './node_modules/style-loader/index.js',
+          { loader: './node_modules/css-loader/dist/cjs.js', options: { importLoaders: 1 } },
+          { loader: './node_modules/postcss-loader/src/index.js', options: { ident: 'postcss', postcss: {}, plugins: [Function: plugins] } },
+        ],
+      },
+      { test: /\.(svg|ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/,
+        loader: './node_modules/file-loader/dist/cjs.js',
+        query: { name: 'static/media/[name].[hash:8].[ext]' },
+      },
+      { test: /\.(mp4|webm|wav|mp3|m4a|aac|oga)(\?.*)?$/,
+        loader: './node_modules/url-loader/dist/cjs.js',
+        query: { limit: 10000, name: 'static/media/[name].[hash:8].[ext]' },
+      },
+    ],
+  },
+  resolve: {
+    extensions: [ '.mjs', '.js', '.jsx', '.json' ],
+    modules: [ 'node_modules' ],
+    mainFields: [ 'browser', 'main', 'module' ],
+    alias: {
+      'core-js': './node_modules/core-js',
+      react: './node_modules/react',
+      'react-dom': './node_modules/react-dom',
     },
-    performance: { hints: false },
-  }
-  ```
-</details>
+  },
+  optimization: {
+    splitChunks: { chunks: 'all' },
+    runtimeChunk: true,
+    minimizer: [ [Object] ],
+  },
+  performance: { hints: false },
+}
+```
 
+</details>
 
 ### CSS Support
 
@@ -182,6 +182,7 @@ import './styles.css';
 > **Note:** with some frameworks/clis we inject plain CSS only. If you need a preprocessor like SASS, you need to [customize the webpack config](/configurations/custom-webpack-config/).
 >
 > **Warning:** storybooks for projects that use Angular CLI cannot import CSS by default. They must either [customize the webpack config](/configurations/custom-webpack-config/), or use the inline loader syntax:
+>
 > ```js
 > import '!style-loader!css-loader!./styles.css';
 > ```
@@ -197,10 +198,7 @@ import { storiesOf } from '@storybook/react';
 
 import imageFile from './static/image.png';
 
-storiesOf('<img />', module)
-  .add('with an image', () => (
-    <img src={imageFile} alt="covfefe" />
-  ));
+storiesOf('<img />', module).add('with an image', () => <img src={imageFile} alt="covfefe" />);
 ```
 
 When you are building a storybook, we'll also export the imported image.
@@ -219,10 +217,7 @@ import { storiesOf } from '@storybook/react';
 
 import data from './data.json';
 
-storiesOf('Component', module)
-  .add('with data', () => (
-    <pre>{JSON.stringify(data, null, 2)}</pre>
-  ));
+storiesOf('Component', module).add('with data', () => <pre>{JSON.stringify(data, null, 2)}</pre>);
 ```
 
 ## NPM Modules

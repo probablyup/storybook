@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from 'react-native';
-import styled from '@emotion/native';
+import styled from 'styled-components/native';
 import Events from '@storybook/core-events';
 import addons from '@storybook/addons';
 import Channel from '@storybook/channels';

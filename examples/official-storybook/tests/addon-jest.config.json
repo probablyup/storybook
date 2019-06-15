@@ -6,7 +6,7 @@
   "transform": {
     ".*": "babel-jest"
   },
-  "snapshotSerializers": ["jest-emotion", "enzyme-to-json/serializer"],
+  "snapshotSerializers": ["enzyme-to-json/serializer"],
   "setupFiles": ["raf/polyfill"],
   "setupFilesAfterEnv": ["<rootDir>/scripts/jest.init.js"],
   "moduleNameMapper": {

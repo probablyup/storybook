@@ -69,7 +69,7 @@ module.exports = {
     '/dll/',
     '/__mocks__ /',
   ],
-  snapshotSerializers: ['jest-emotion', 'enzyme-to-json/serializer'],
+  snapshotSerializers: ['enzyme-to-json/serializer'],
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: ['./scripts/jest.init.js'],
   coverageReporters: ['lcov'],

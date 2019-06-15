@@ -1,7 +1,7 @@
 import path from 'path';
 import { render as renderer } from 'enzyme';
 import { createSerializer as enzymeSerializer } from 'enzyme-to-json';
-import { createSerializer as emotionSerializer } from 'jest-emotion';
+import { stylesheetSerializer } from 'jest-styled-components';
 
 import initStoryshots, { multiSnapshotWithOptions } from '@storybook/addon-storyshots';
 
@@ -12,5 +12,5 @@ initStoryshots({
   test: multiSnapshotWithOptions({
     renderer,
   }),
-  snapshotSerializers: [enzymeSerializer(), emotionSerializer()],
+  snapshotSerializers: [enzymeSerializer(), stylesheetSerializer],
 });

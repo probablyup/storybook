@@ -91,7 +91,7 @@ The webpack config [is configurable](/configurations/custom-webpack-config/), an
                 './node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js',
                 './node_modules/@babel/plugin-proposal-class-properties/lib/index.js',
                 './node_modules/@babel/plugin-syntax-dynamic-import/lib/index.js',
-                [ './node_modules/babel-plugin-emotion/dist/babel-plugin-emotion.cjs.js', { sourceMap: true, autoLabel: true } ],
+                './node_modules/babel-plugin-styled-components/lib/index.js',
                 './node_modules/babel-plugin-macros/dist/index.js',
                 './node_modules/@babel/plugin-transform-react-constant-elements/lib/index.js',
                 './node_modules/babel-plugin-add-react-displayname/index.js',
@@ -149,7 +149,7 @@ The webpack config [is configurable](/configurations/custom-webpack-config/), an
 ### Debug the default webpack config
 
   <summary>To effectively customise the webpack config, you might need to get the full default config it's using.</summary>
-  
+
   <div></div>
 
 - Create a `.storybook/webpack.config.js` file.
@@ -253,7 +253,7 @@ If you have an existing webpack config for your project and want to reuse this a
 - Import your main webpack config into Storybook's `webpack.config.js` and use the loaders and plugins used in that.
 - Create a new file with common webpack options and use it in both inside the main webpack config and inside Storybook's `webpack.config.js`.
 
-**Example**  
+**Example**
 _merging the loaders from your app's `webpack.config.js` with storybook's_
 
 ```js

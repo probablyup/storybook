@@ -1,4 +1,5 @@
 import 'jest-enzyme/lib/index';
+import 'jest-styled-components';
 
 // setup file
 import { configure } from 'enzyme';

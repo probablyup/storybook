@@ -22,7 +22,6 @@
     "prepare": "node ../../scripts/prepare.js"
   },
   "dependencies": {
-    "@emotion/native": "^10.0.10",
     "@storybook/addons": "5.2.0-alpha.23",
     "@storybook/channel-websocket": "5.2.0-alpha.23",
     "@storybook/channels": "5.2.0-alpha.23",
@@ -30,7 +29,8 @@
     "@storybook/core-events": "5.2.0-alpha.23",
     "core-js": "^3.0.1",
     "react-native-swipe-gestures": "^1.0.3",
-    "rn-host-detect": "^1.1.5"
+    "rn-host-detect": "^1.1.5",
+    "styled-components": "beta"
   },
   "devDependencies": {
     "@types/react-native": "^0.57.57",

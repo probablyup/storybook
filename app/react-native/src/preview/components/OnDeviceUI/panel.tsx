@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, Animated } from 'react-native';
-import styled from '@emotion/native';
+import styled from 'styled-components/native';
 import { EmotionProps } from '../Shared/theme';
 
 const Container: typeof Animated.View = styled(Animated.View)`

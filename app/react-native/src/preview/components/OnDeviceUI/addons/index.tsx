@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import styled from '@emotion/native';
+import styled from 'styled-components/native';
 import addons from '@storybook/addons';
 import AddonsList from './list';
 import AddonWrapper from './wrapper';

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { ScrollView } from 'react-native';
-import styled from '@emotion/native';
+import styled from 'styled-components/native';
 import { Collection } from '@storybook/addons';
 import Button from '../navigation/button';
 import { EmotionProps } from '../../Shared/theme';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SectionList, TextInput, TouchableOpacity, View, SafeAreaView } from 'react-native';
-import styled from '@emotion/native';
+import styled from 'styled-components/native';
 import Events from '@storybook/core-events';
 import addons from '@storybook/addons';
 import { EmotionProps } from '../Shared/theme';

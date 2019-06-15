@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { TouchableOpacity } from 'react-native';
-import styled from '@emotion/native';
+import styled from 'styled-components/native';
 import { EmotionProps } from '../../Shared/theme';
 
 type EmotionButtonProps = EmotionProps & { active: boolean };
